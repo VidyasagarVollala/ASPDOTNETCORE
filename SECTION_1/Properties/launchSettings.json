@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "http": {
+    "kestral": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
