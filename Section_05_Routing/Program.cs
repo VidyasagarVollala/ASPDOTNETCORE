@@ -32,11 +32,18 @@ namespace Section_05_Routing
 				await context.Response.WriteAsync($"In Files {filename}.{extension}");
 			});
 
+			//URL :localhost/Employee/profile/Vidyasagar
 			app.MapGet("Employee/profile/{employeeName}", async (context) =>
 			{
 				string? employeeName = Convert.ToString(context.Request.RouteValues["employeeName"]);
-
-				await context.Response.WriteAsync($"In Employee Map {employeeName}");
+				
+				await context.Response.WriteAsync($"In From  Map {employeeName}");
+			});
+			//URL :localhost/employee?Ename=Vidyasagar
+			app.MapGet("employee", async (context) =>
+			{
+				
+				await context.Response.WriteAsync($"In from query string Map {context.Request.Query["EName"]}");
 			});
 			app.MapFallback(async (context) =>
 			{
