@@ -25,6 +25,9 @@ namespace ControllerExample
 			app.MapControllers();
 			//Adds all actions methods as endpoints. So that no need of using UseEndpoints() method for adding the action methods as endpoints
 			//It will detects the all controllers of enitre project and it will pick up all action methods and routing will be adding at a time.by this
+
+			//app.UseRouting();
+			app.UseStaticFiles();
 			app.Run();
 		}
 	}
