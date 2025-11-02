@@ -87,21 +87,40 @@ namespace ControllerExample.Controllers
 
 		//}
 		//RedirectionResult example
-		[Route("bookstore")]
-		public IActionResult Index()
+		//[Route("bookstore")]
+		//public IActionResult Index()
+		//{
+		//	//return new RedirectToActionResult("Books", "Store", new { });////302 -found
+		//	//return RedirectToAction("Books", "Store", new { id=123});
+
+
+		//	//return new RedirectToActionResult("Books", "Store", new { });////301 -moved permanently
+		//	//return RedirectToActionPermanent("Books", "Store", new {id=12 });
+
+		//	//	return LocalRedirectResult($"/store/books{id}");
+		//	//return LocalRedirectPermanent($"/store/books{1}");
+
+		//	//return Redirect($"/store/books{1}");
+		//	return RedirectPermanent($"/store/books{1}");
+
+		//}
+
+
+		//Query String vs routedata example
+		[Route("bookstore/{bookid?}/{isLoggedIn?}")]
+		public IActionResult Index(int? bookid,[FromRoute]bool isLoggedIn, Book book)
 		{
-			//return new RedirectToActionResult("Books", "Store", new { });////302 -found
-			//return RedirectToAction("Books", "Store", new { id=123});
+			if (!bookid.HasValue)
+				return BadRequest("Book Id is not supplied or empyt");
+			if (bookid <= 0)
+				return BadRequest("Book Id is not less than or equal to zero");
+			if (bookid > 1000)
+				return NotFound("Book Id must be in 1 to 1000");
+			if (!isLoggedIn)
+				return Unauthorized("User is not logged in");
 
+			return Content($"Book found {bookid} book {book}", "text/plain");
 
-			//return new RedirectToActionResult("Books", "Store", new { });////301 -moved permanently
-			//return RedirectToActionPermanent("Books", "Store", new {id=12 });
-
-			//	return LocalRedirectResult($"/store/books{id}");
-			//return LocalRedirectPermanent($"/store/books{1}");
-
-			//return Redirect($"/store/books{1}");
-			return RedirectPermanent($"/store/books{1}");
 
 		}
 
