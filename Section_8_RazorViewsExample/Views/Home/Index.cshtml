@@ -1,0 +1,137 @@
+﻿@using Section_8_RazorViewsExample.Model;
+
+@* It’s the most common way to send a list of data from a controller.
+
+It makes the view strongly typed.
+
+It enables foreach loops.
+Scenario	Why IEnumerable<T>?
+Table of records	Looping through many items
+Dropdown lists	Populating <select> options
+Rendering partials for each item	Repeating UI elements
+*@
+@model IEnumerable<Person>;
+
+
+@{
+    // Person person = new Person()
+    // {
+    //     Id=123, Name="Sindhuja_Devamshika",Age=28, Gender =Gender.Female
+    // };
+
+    // List<Person> people = new List<Person>
+    // {
+    // new Person()
+    // {
+    //     Name="Vidyasagar", Age=29,Gender=Gender.Male, SurName="Vollala"
+    // }, new Person()
+    // {
+    //     Name="Sindhuja", Age=25,Gender=Gender.Female, SurName="Vollala"
+    // }, new Person()
+    // {
+    //     Name="Devamshika", Age=1,Gender=Gender.Female, SurName="Vollala"
+    // }
+
+    // };
+
+    //var alertScript = $"<script>alert( '{people.Count} people found') </script>";
+}
+
+@{
+    //Local function
+
+    string GetFullName(string? name, string? surName)
+    {
+        return name +" "+ surName;
+    }
+
+}
+<title>Hello</title>
+
+<body>
+@* 
+   @ViewData["appTtitle"] *@
+    @*  @if(person.Age > 18)
+    {
+    <h2>@person.Name can case her vote</h2>
+    }
+    else{
+    <h2>@person.Name is not major to caste her vote</h2>
+    }
+
+    @switch(person.Gender)
+    {
+    case Gender.Male:
+    <h3>March 7 men's day</h3>
+    break;
+    case Gender.Female:
+    <h3>March 17 Women's day</h3>
+    break;
+    case Gender.Other:
+    <h3>March 27 Transgender's day</h3>
+    break;
+    } *@
+
+   @*  @foreach (Person person in people)
+    {
+        <ul>
+            <li>@person.Name</li>
+            <li>@person.Age</li>
+            <li>@person.Gender</li>
+        </ul>
+    }
+    @for( int i=0; i<=2;i++)
+    {
+
+    @:Hello  statictext 
+    <ul>
+        <li>person.Name</li>
+        <li>person.Age</li>
+        <li>person.Gender</li>
+        <li>GetFullName(person.Name,person.SurName)</li>
+    </ul>
+    }
+    
+    
+    *@
+
+   @*  @Html.Raw(alertScript); *@
+    @{
+        // List<Person>? people = (List<Person>?)ViewData["person"];   //If we use viewBag no need to typecaste
+        
+    }
+
+
+    @* @foreach (Person person in ViewData["person"])
+    @foreach (Person person in ViewBag.people)
+    {
+        
+        @:Hello @* statictext *@
+       @*  <ul>
+            <li>@person.Name</li>
+            <li>@person.Age</li>
+            <li>@person.Gender</li>
+            <li>@GetFullName(person.Name,person.SurName)</li>
+        </ul> *@
+
+
+ @foreach (Person person in Model)
+    
+    {
+
+
+    <ul>
+    <li>@person.Name</li>
+    <li>@person.Age</li>
+    <li>@person.Gender</li>
+    <li>@GetFullName(person.Name,person.SurName)</li>
+    </ul> 
+    }
+
+
+    <a href="/person-product">Personwith product</a>
+
+
+
+
+</body>
