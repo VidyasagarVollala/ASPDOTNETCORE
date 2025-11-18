@@ -1,0 +1,28 @@
+﻿
+@model PersonDataWithProduct
+
+<body>
+
+
+
+ @foreach( var person in Model.PersonData)
+  {
+        <ul>
+            <li>@person.Name</li>
+            <li>@person.Age</li>
+            <li>@person.SurName</li>
+           
+        </ul>
+  }
+
+    @foreach (var product in Model.ProductData)
+    {
+        <ul>
+            <li>@product.Id</li>
+            <li>@product.Description</li>
+
+        </ul>
+    }
+   
+
+</body>
