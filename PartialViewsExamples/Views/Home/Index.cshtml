@@ -1,0 +1,24 @@
+﻿<h2>Home</h2>
+
+
+
+
+<button class="buton buton-blue-back" type="button" id="button-load">Load Programming Languages</button>
+<div class="box programing-language-content">
+
+</div>
+
+<script>
+    document.querySelector("#button-load").addEventListener("click", async function () {
+        var response = await fetch("programing-languages");
+     var languages =   await response.text();
+
+        document.querySelector(".programing-language-content").innerHTML = languages
+    });
+</script>
+
+
+@* 
+<div class="box">
+    <partial name="_ListPartialView" model="listModel"></partial>
+</div> *@
