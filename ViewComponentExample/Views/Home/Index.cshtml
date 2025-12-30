@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Home</h2>
+@{
+    PersonGridModel personGridModel = new PersonGridModel()
+            {
+                GridTitle = "Employee Details",
+                Persons = new List<Person>
+                {
+                    new Person
+                    {
+                        EmployeeName= "Vidyasagar",
+                        Job = "Devloper"
+                    },
+                    new Person
+                    {
+                        EmployeeName = "Sindhuja",
+                        Job = "Devloper"
+                    },
+                     new Person
+                    {
+                        EmployeeName = "Devamshika",
+                        Job = "Traineee"
+                    },
+
+                }
+            };
+}
+
+@await Component.InvokeAsync("Grid",new{
+        gridsss = personGridModel
+})  
+
+
+@{
+    PersonGridModel friendGridModel = new PersonGridModel()
+            {
+                GridTitle = "Friend Details",
+                Persons = new List<Person>
+                {
+                    new Person
+                    {
+                        EmployeeName= "Raju",
+                        Job = "Devloper"
+                    },
+                    new Person
+                    {
+                        EmployeeName = "Rani",
+                        Job = "Devloper"
+                    },
+                     new Person
+                    {
+                        EmployeeName = "Rajesh",
+                        Job = "Traineee"
+                    },
+
+                }
+            };
+}
+
+@await Component.InvokeAsync("Grid", new
+    {
+        gridsss = friendGridModel
+    })
+
+

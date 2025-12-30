@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+@{
+    PersonGridModel studentGridModel = new PersonGridModel()
+            {
+                GridTitle = "Farmars Details",
+                Persons = new List<Person>
+                {
+                    new Person
+                    {
+                        EmployeeName= "Emma",
+                        Job = "Devloper"
+                    },
+                    new Person
+                    {
+                        EmployeeName = "John",
+                        Job = "Devloper"
+                    },
+                     new Person
+                    {
+                        EmployeeName = "Mahi",
+                        Job = "Traineee"
+                    },
+
+                }
+            };
+}
+
+@* @await Component.InvokeAsync("Grid", studentGridModel) *@
+
+
+
+
+<vc:grid gridsss="studentGridModel"></vc:grid>  @* Another way of calling viewcomponent *@
